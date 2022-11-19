@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String      @id @default(auto()) @map("_id") @db.ObjectId
+  email    String      @unique
+  verify   VerifyUser?
+  webhooks Webhook[]
+}
+
+type VerifyUser {
+  code     String?
+  expireOn DateTime?
+}
+
+model Webhook {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  uuid      String
+  title     String
+  createdAt DateTime? @default(now())
+  owner     User?     @relation(fields: [ownerId], references: [id])
+  ownerId   String?   @db.ObjectId
+  Event     Event[]
+}
+
+model Event {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  method    String
+  ip        String
+  path      String
+  headers   Json
+  queries   Json
+  body      Json
+  createdAt DateTime? @default(now())
+  webhook   Webhook?  @relation(fields: [webhookId], references: [id])
+  webhookId String?   @db.ObjectId
+}
+
+type Query {
+  key   String
+  value String
+}
+
+type Header {
+  key   String
+  value String
+}
