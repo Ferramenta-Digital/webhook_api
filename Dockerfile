@@ -8,8 +8,6 @@ COPY package*.json ./
 
 RUN npm install -g npm@9.1.2
 
-USER node
-
 RUN npm install --no-update-package-lock --clean-node-modules
 
 COPY --chown=node:node . .
@@ -17,6 +15,10 @@ COPY --chown=node:node . .
 RUN npm run build
 
 RUN npm ci --only=production
+
+RUN chown node:node -R ./node_modules
+
+USER node
 
 EXPOSE 3000
 
