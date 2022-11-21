@@ -1,8 +1,8 @@
 locals {
   settings = {
-    maxScale : "50",
+    maxScale : "10",
     minScale : "0",
-    maxMemory : "512Mi",
+    maxMemory : "256Mi",
     maxCPU : "1000m",
     containerConcurrency : 200,
     timeoutSeconds : 90,
