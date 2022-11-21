@@ -70,8 +70,8 @@ resource "google_cloud_run_service" "create_cloud_run" {
 
     metadata {
       annotations = {
-        "autoscaling.knative.dev/maxScale"        = local.settings.maxScale
-        "autoscaling.knative.dev/minScale"        = local.settings.minScale
+        "autoscaling.knative.dev/maxScale" = local.settings.maxScale
+        "autoscaling.knative.dev/minScale" = local.settings.minScale
       }
     }
   }
