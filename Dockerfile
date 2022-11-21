@@ -14,7 +14,7 @@ COPY --chown=node:node . .
 
 RUN npm run build
 
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 RUN chown node:node -R ./node_modules
 
