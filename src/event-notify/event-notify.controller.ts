@@ -11,7 +11,7 @@ import { Request } from 'express';
 
 import { EventNotifyService } from './event-notify.service';
 
-@Controller('event-notify')
+@Controller('e')
 export class EventNotifyController {
   constructor(private readonly eventNotifyService: EventNotifyService) {}
 
