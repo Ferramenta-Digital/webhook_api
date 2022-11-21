@@ -1,13 +1,17 @@
 resource "google_project_service" "gcp_resource_manager_api" {
   service = "cloudresourcemanager.googleapis.com"
+
+  disable_on_destroy = false
 }
 resource "google_project_service" "compute_api" {
   service = "compute.googleapis.com"
+
+  disable_on_destroy = false
 }
 resource "google_project_service" "run_api" {
   service = "run.googleapis.com"
 
-  disable_on_destroy = true
+  disable_on_destroy = false
 }
 
 
@@ -68,7 +72,6 @@ resource "google_cloud_run_service" "create_cloud_run" {
       annotations = {
         "autoscaling.knative.dev/maxScale"        = local.settings.maxScale
         "autoscaling.knative.dev/minScale"        = local.settings.minScale
-        "run.googleapis.com/vpc-access-connector" = local.settings.vpcConnector
       }
     }
   }
