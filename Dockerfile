@@ -1,8 +1,4 @@
-FROM node:14-alpine
-
-ARG CACHEBUST=1
-
-ARG INTERNAL_PACKAGES_GITLAB
+FROM node:16-alpine
 
 RUN mkdir -p /home/node/project/dist && chown -R node:node /home/node/project
 
