@@ -47,6 +47,9 @@ export class WebhooksService {
         title: true,
         createdAt: true,
       },
+      orderBy: {
+        createdAt: 'desc',
+      },
     });
   }
 
@@ -149,6 +152,9 @@ export class WebhooksService {
         id: true,
         createdAt: true,
         method: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
       },
     });
   }
