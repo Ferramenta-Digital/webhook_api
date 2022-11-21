@@ -6,10 +6,14 @@ import * as jwt from 'jsonwebtoken';
 import { PrismaService } from '../prisma/prisma.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { LoginConfirmUserDto } from './dto/login-confirm-user.dto';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private prisma: PrismaService,
+    private mailerService: MailService,
+  ) {}
 
   async login({ email }: LoginUserDto) {
     const user = await this.prisma.user.findFirst({
@@ -44,8 +48,10 @@ export class UsersService {
       });
     }
 
-    console.log(code);
-    // TODO: Send code with email
+    await this.mailerService.sendActivationCode({
+      code,
+      email,
+    });
 
     return;
   }

@@ -2,8 +2,8 @@ import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { LoginUserDto } from './dto/login-user.dto';
 import { LoginConfirmUserDto } from './dto/login-confirm-user.dto';
-import { Auth } from 'src/auth/auth.decorator';
-import { User, UserEntity } from 'src/auth/user.decorator';
+import { Auth } from '../auth/auth.decorator';
+import { User, UserEntity } from '../auth/user.decorator';
 
 @Controller('users')
 export class UsersController {

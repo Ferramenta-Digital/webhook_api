@@ -10,8 +10,8 @@ import {
 import { WebhooksService } from './webhooks.service';
 import { CreateWebhookDto } from './dto/create-webhook.dto';
 import { UpdateWebhookDto } from './dto/update-webhook.dto';
-import { Auth } from 'src/auth/auth.decorator';
-import { User, UserEntity } from 'src/auth/user.decorator';
+import { Auth } from '../auth/auth.decorator';
+import { User, UserEntity } from '../auth/user.decorator';
 
 @Controller('webhooks')
 @Auth()
