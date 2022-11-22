@@ -26,7 +26,7 @@ export class EventNotifyService {
         body,
         headers,
         queries: {},
-        ip: '',
+        ip: body?.details?.remote?.ip || '',
         method: 'MAIL',
         path: '',
         webhookId: webhook.id,
