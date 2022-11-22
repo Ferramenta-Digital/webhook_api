@@ -34,7 +34,9 @@ export class EventNotifyService {
       },
     });
 
-    return 'This action adds a new eventNotify';
+    return {
+      message: 'Success',
+    };
   }
 
   async create({ uuid, body, query, headers, request }: CreateEventNotifyDto) {
@@ -60,6 +62,9 @@ export class EventNotifyService {
         createdAt: DateTime.now().toJSDate(),
       },
     });
-    return 'This action adds a new eventNotify';
+
+    return {
+      message: 'Success',
+    };
   }
 }
