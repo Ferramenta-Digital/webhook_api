@@ -54,7 +54,7 @@ export class WebhooksService {
   }
 
   async findOne(id: string, ownerId: string) {
-    return this.prisma.webhook.findFirst({
+    const webhook = await this.prisma.webhook.findFirst({
       where: {
         ownerId,
         id,
@@ -72,6 +72,12 @@ export class WebhooksService {
         },
       },
     });
+
+    return {
+      ...webhook,
+      url: `https://api-production-qggemmggya-uk.a.run.app/e/${webhook.uuid}`,
+      email: `${webhook.uuid}@test.mh4sh.dev`,
+    };
   }
 
   async update(id: string, { title }: UpdateWebhookDto, ownerId: string) {
