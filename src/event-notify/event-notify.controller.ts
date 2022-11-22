@@ -6,6 +6,7 @@ import {
   Headers,
   Req,
   Param,
+  Post,
 } from '@nestjs/common';
 import { Request } from 'express';
 
@@ -15,7 +16,7 @@ import { EventNotifyService } from './event-notify.service';
 export class EventNotifyController {
   constructor(private readonly eventNotifyService: EventNotifyService) {}
 
-  @All('/email/:uuid')
+  @Post('/email/:uuid')
   createEmail(@Param('uuid') uuid: string, @Body() body: any) {
     return this.eventNotifyService.createEmail({
       uuid,
