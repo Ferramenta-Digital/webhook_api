@@ -12,7 +12,9 @@ import { CreateWebhookDto } from './dto/create-webhook.dto';
 import { UpdateWebhookDto } from './dto/update-webhook.dto';
 import { Auth } from '../auth/auth.decorator';
 import { User, UserEntity } from '../auth/user.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Webhook')
 @Controller('webhooks')
 @Auth()
 export class WebhooksController {
