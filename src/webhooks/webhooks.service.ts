@@ -156,8 +156,13 @@ export class WebhooksService {
       },
       select: {
         id: true,
-        createdAt: true,
         method: true,
+        ip: true,
+        path: true,
+        headers: true,
+        queries: true,
+        body: true,
+        createdAt: true,
       },
       orderBy: {
         createdAt: 'desc',
